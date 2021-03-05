@@ -1,0 +1,43 @@
+.childrens {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.childrens-details {
+  padding: 2em;
+  align-content: center;
+  background-color: #371450;
+  border-radius: 10px;
+  color: white;
+  margin: 1em;
+  width: 400px;
+}
+.childrens-details:hover {
+  padding: 2em;
+  align-content: center;
+  background-color: #190427;
+  border-radius: 10px;
+
+  margin: 1em;
+}
+
+.passenger-info span,
+p {
+  font-size: 20px;
+}
+
+@media (max-width: 850px) {
+  .childrens-details {
+    width: -webkit-fill-available;
+  }
+}
+
+.checked-in-container {
+  background: linear-gradient(90deg, turquoise 24px, white 0%);
+ 
+}
+.checked-out-container {
+    background:linear-gradient(90deg, crimson 24px, white 0%);
+  }
+  

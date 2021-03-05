@@ -1,0 +1,41 @@
+<div class="passengerDetails">
+  <span
+    class="status"
+    [ngClass]="{
+      'checked-in': passenger.checkedIn,
+      'checked-out': !passenger.checkedIn
+    }"
+  ></span>
+  <input
+    type="text"
+    [value]="passenger.fullName"
+    *ngIf="editing"
+    (input)="handleFullNameEdit($event)"
+  />
+  <span *ngIf="!editing">{{ passenger.fullName }}</span>
+  <div class="checkin-date">
+    <p>
+      Check in date :
+      <br />
+      <span class="information">
+        {{
+          passenger.checkInDate
+            ? (passenger.checkInDate | date: "y MMMM d")
+            : "not checked in"
+        }}
+      </span>
+    </p>
+  </div>
+  <div class="children">
+    <p>
+      Children :<span class="information">
+        {{ passenger.children?.length || 0 }}</span
+      >
+    </p>
+  </div>
+  <div class="action">
+    <button (click)="toggleEdit()">{{ editing ? "Done" : "Edit" }}</button>
+    <button (click)="handleRemove(passenger.id)">Remove</button>
+    <a href="/details/{{ passenger.id }}"><button>Details</button></a>
+  </div>
+</div>

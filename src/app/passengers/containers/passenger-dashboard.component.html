@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>AirLine passengers</h1>
+  <div *ngIf="!addingNewPassenger" class="">
+    <button (click)="addNewPassenger()">New Passenger</button>
+    <passenger-counter [items]="passengers"></passenger-counter>
+    <div class="passengerList">
+      <passenger-list
+        *ngFor="let passenger of passengers"
+        [passenger]="passenger"
+        (edit)="editPassenger($event)"
+        (remove)="removePassenger($event)"
+      >
+      </passenger-list>
+    </div>
+  </div>
+  <div *ngIf="addingNewPassenger">
+    <passenger-forms (submit)="appendPassenger($event)" (cancel)="cancelAddingPassenger()"></passenger-forms>
+  </div>
+</div>

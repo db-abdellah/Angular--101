@@ -1,0 +1,135 @@
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  transition: all 0.12s ease-in;
+}
+/*------------------------------------------------------------------------------------*/
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font: 300 15px/1.4 "Futura BQ", BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+body {
+  height: inherit;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+html {
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  color: #371450;
+  background: linear-gradient(45deg, #371450, #eb2858);
+}
+
+img {
+  vertical-align: bottom;
+}
+img a {
+  border: 0;
+}
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #4b0082;
+  text-decoration: none;
+}
+input,
+button {
+  outline: 0;
+}
+input {
+  border: none;
+  background: #fff;
+  font-size: 13px;
+  padding: 6px 0px 6px 10px;
+  border-radius: 1px;
+  box-shadow: 1px 1px 3px 1px #ccc;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+  text-align: center;
+}
+input[type="radio"] {
+  box-shadow: none;
+}
+button {
+  cursor: pointer;
+  background: #4b0082;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-align: center;
+  color: #fff;
+  font-family: "Futura";
+  margin: 10px;
+  min-width: 65px;
+}
+button:hover {
+  background-color: #eb2858;
+}
+p {
+  margin: 5px 0;
+}
+
+body {
+  padding: 50px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+}
+h4 {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0;
+}
+
+label {
+  display: block;
+  padding: 1em 0 1em 0;
+}
+.container{
+  padding: 2em;
+  margin: 2em;
+  min-height: 90%;
+  background-color: white;
+  border-radius: 1em;
+  box-shadow: 7px 12px 10px #00000045;
+}
+.status {
+  display: block;
+  width: 10px;
+  height: 10px;
+  float: left;
+  border-radius: 50%;
+  margin: 5px 10px 0 0;
+}
+.status.checked-in {
+  background-color: turquoise;
+}
+
+.status.checked-out {
+  background-color: tomato;
+}
+
+.information {
+  color: #eb2858;
+}
+
+
+hr {
+  border: 1px solid rgb(0 0 0 / 7%);
+  border-radius: 10px;
+}

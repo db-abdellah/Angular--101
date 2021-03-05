@@ -1,0 +1,41 @@
+<div style="text-align: center"
+ class="container" 
+ [ngClass]="{
+    'checked-in-container': passenger.checkedIn,
+    'checked-out-container': !passenger.checkedIn
+  }">
+  <div class="passenger-info">
+    
+
+    <span>{{ passenger.fullName }}</span>
+    <div class="checkin-date">
+      <p>
+        Check in date :
+        <br />
+        <span class="information" >
+          {{
+            passenger.checkInDate
+              ? (passenger.checkInDate | date: "y MMMM d")
+              : "not checked in"
+          }}
+        </span>
+      </p>
+    </div>
+  </div>
+  <div *ngIf="passenger.children.length > 0">
+    <div class="children">
+      <p>Children :<span class="information"> </span></p>
+    </div>
+    <div class="childrens">
+      <div class="childrens-details" *ngFor="let child of passenger.children">
+        <h1>
+          Name : <span class="information">{{ child.name }}</span>
+        </h1>
+        <h1>
+          Age : <span class="information">{{ child.age }}</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <button (click)="goBack()">Go Back</button>
+</div>

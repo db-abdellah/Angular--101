@@ -1,0 +1,12 @@
+<div class="childForm">
+    <h3>Child infos:</h3>
+    <label>Full Name:</label>
+    <input type="text" [(ngModel)]="child.name" required="required" />
+    <hr>
+    <label>Age:</label>
+    <input type="number" [(ngModel)]="child.age" min="1"  required="required" />
+    <hr>
+    <button (click)="submitChild()">Submit Child</button>
+    <button (click)="cancelAddingChild()">Cancel</button>
+    
+</div>

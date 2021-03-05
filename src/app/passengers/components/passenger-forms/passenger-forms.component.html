@@ -1,0 +1,28 @@
+<div class="passengerForm">
+    <h3>Passenger infos:</h3>
+    <label>Full Name:</label>
+    <input type="text" [(ngModel)]="newPassenger.fullName" required="required" />
+    <hr>
+    
+    <label>Checked In:</label>
+    <input type="radio" name="checkedIn"  [(ngModel)]="newPassenger.checkedIn"  required="required" [value]="true" /><span>yes</span>
+    <input type="radio" name="checkedIn"  [(ngModel)]="newPassenger.checkedIn"  required="required" [value]="false" /><span>no</span>
+    <hr>
+    <div *ngIf="newPassenger.checkedIn">
+        <label>Checked In Date:</label>
+        <input type="date" name="checkedIn" value="" max="05/03/2021" [(ngModel)]="newPassenger.checkInDate"/>
+        <hr> 
+    </div>
+    
+    <label *ngIf="newPassenger.children">Childrens:  {{newPassenger.children.length}}  </label>
+    <button *ngIf="!addingChild" (click)="addChild()">Add a child</button>
+    <div *ngIf="addingChild">
+        <child-forms 
+        (submit)="addNewChild($event)"
+        (cancel) ="cancelAddingChild()"
+        ></child-forms>
+    </div>
+    <button (click)="submitPassenger()">Submit Passenger</button>
+    <button (click)="cancelAddingPassenger()">Cancel</button>
+
+</div>
