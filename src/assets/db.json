@@ -18,7 +18,7 @@
     },
     {
       "id": 3,
-      "fullName": "James",
+      "fullName": "James X",
       "checkedIn": true,
       "checkInDate": 1491606000000
     },
@@ -43,24 +43,6 @@
       "fullName": "aaa",
       "checkedIn": false,
       "id": 6
-    },
-    {
-      "fullName": "test",
-      "checkedIn": true,
-      "checkInDate": "2021-03-01",
-      "id": 7
-    },
-    {
-      "children": [
-        {
-          "name": "aziz",
-          "age": 8
-        }
-      ],
-      "fullName": "Aziz ...",
-      "checkedIn": true,
-      "checkInDate": "2021-03-02",
-      "id": 8
     }
   ]
 }

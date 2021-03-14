@@ -19,7 +19,7 @@ import { PassengerDetails } from "./components/passenger-details/passenger-detai
     ChildForms,
     PassengerDetails,
   ],
-  imports: [CommonModule, FormsModule, HttpClientModule,],
+  imports: [CommonModule, FormsModule, HttpClientModule,FormsModule],
   providers: [PassengerService],
   exports: [PassengerDashboardComponent,PassengerDetails],
 })

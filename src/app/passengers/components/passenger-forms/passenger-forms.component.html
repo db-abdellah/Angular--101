@@ -1,28 +1,57 @@
 <div class="passengerForm">
-    <h3>Passenger infos:</h3>
+  <h3>Passenger infos:</h3>
+  <form #form="ngForm" noValidate (ngSubmit)="submit()">
     <label>Full Name:</label>
-    <input type="text" [(ngModel)]="newPassenger.fullName" required="required" />
-    <hr>
-    
+    <input
+      type="text"
+      [(ngModel)]="newPassenger.fullName"
+      required
+      #fullName="ngModel"
+      minlength="3"
+      name="fullName"
+    />
+    <div class="error" *ngIf="fullName.errors?.required && fullName?.dirty">
+        this field is required
+      </div>
+      <div class="error" *ngIf="fullName.errors?.minlength && fullName?.dirty">
+        this field requires minimum 3 characters
+      </div>
+    <hr />
+
     <label>Checked In:</label>
-    <input type="radio" name="checkedIn"  [(ngModel)]="newPassenger.checkedIn"  required="required" [value]="true" /><span>yes</span>
-    <input type="radio" name="checkedIn"  [(ngModel)]="newPassenger.checkedIn"  required="required" [value]="false" /><span>no</span>
-    <hr>
+    <input
+      type="checkbox"
+      name="checkedIn"
+      [(ngModel)]="newPassenger.checkedIn"
+      required="required"
+      [value]="false"
+      type="checkbox"
+    /><span>Checked in</span>
+
+    <hr />
     <div *ngIf="newPassenger.checkedIn">
-        <label>Checked In Date:</label>
-        <input type="date" name="checkedIn" value="" max="05/03/2021" [(ngModel)]="newPassenger.checkInDate"/>
-        <hr> 
+      <label>Checked In Date:</label>
+      <input
+        type="date"
+        name="checkInDate"
+        value=""
+        max="05/03/2021"
+        [(ngModel)]="newPassenger.checkInDate"
+      />
+      <hr />
     </div>
-    
-    <label *ngIf="newPassenger.children">Childrens:  {{newPassenger.children.length}}  </label>
+
+    <label 
+      >Childrens: {{ newPassenger.children.length || 0}}
+    </label>
     <button *ngIf="!addingChild" (click)="addChild()">Add a child</button>
     <div *ngIf="addingChild">
-        <child-forms 
-        (submit)="addNewChild($event)"
-        (cancel) ="cancelAddingChild()"
-        ></child-forms>
+      <child-forms
+        (submitEvent)="addNewChild($event)"
+        (cancel)="cancelAddingChild()"
+      ></child-forms>
     </div>
-    <button (click)="submitPassenger()">Submit Passenger</button>
+    <button type="submit" [disabled]="form.invalid">Submit Passenger</button>
     <button (click)="cancelAddingPassenger()">Cancel</button>
-
+  </form>
 </div>

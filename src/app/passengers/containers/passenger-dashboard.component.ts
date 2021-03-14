@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 
 import { Passenger } from "src/assets/passengers";
 import { PassengerService } from "../passenger.service";
@@ -11,47 +12,52 @@ import { PassengerService } from "../passenger.service";
 export class PassengerDashboardComponent implements OnInit {
   public passengers: Passenger[] = [];
   public addingNewPassenger: Boolean = false;
-  public searchString:string;
-
+  private passengerSubscriptions: Subscription;
 
   constructor(private passengerService: PassengerService) {}
 
-
-
-
-  cancelAddingPassenger(){
-    this.addingNewPassenger=false;
+  cancelAddingPassenger() {
+    this.addingNewPassenger = false;
   }
   ngOnInit() {
     this.getPassengers();
   }
   getPassengers(): void {
-    this.passengerService.getPassengers().subscribe((passengers) => {
-      this.passengers = [...passengers];
-      console.log(this.passengers);
-    });
+    this.passengerSubscriptions = this.passengerService
+      .getPassengers()
+      .subscribe((passengers) => {
+        this.passengers = [...passengers];
+        console.log(this.passengers);
+      });
   }
   editPassenger(passenger: Passenger) {
     console.log(passenger);
-    this.passengerService
+
+    this.passengerSubscriptions = this.passengerService
       .editPassenger(passenger)
       .subscribe((_) => console.log("test"));
   }
 
   removePassenger(id: number) {
-    this.passengerService
+    this.passengerSubscriptions = this.passengerService
       .deletePassenger(id)
-      .subscribe((_) => console.log("test"));
+      .subscribe(p=>{
+        this.passengers=this.passengers.filter(passenger=>passenger.id!=id)
+      });
   }
 
   addNewPassenger() {
     this.addingNewPassenger = true;
   }
   appendPassenger(newPassenger: Passenger) {
-    this.passengerService
+    this.passengerSubscriptions = this.passengerService
       .addPassenger(newPassenger)
       .subscribe((newPassenger) => {
         this.passengers.push(newPassenger);
       });
+  }
+
+  ngOnDestroy() {
+    this.passengerSubscriptions.unsubscribe();
   }
 }

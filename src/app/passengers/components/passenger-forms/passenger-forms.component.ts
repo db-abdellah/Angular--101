@@ -7,7 +7,7 @@ import { Child, Passenger } from "src/assets/passengers";
   styleUrls: ["./passenger-forms.component.css"],
 })
 export class PassengerForms implements OnInit {
-  @Output() submit: EventEmitter<Passenger> = new EventEmitter();
+  @Output() submitEvent: EventEmitter<Passenger> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   getDateToday():string{
     return (new Date()).toLocaleDateString();
@@ -34,10 +34,13 @@ export class PassengerForms implements OnInit {
     this.newPassenger.children.push(child);
     this.addingChild = false;
   }
-
-  submitPassenger() {
-    if (this.validateInput()) this.submit.emit(this.newPassenger);
+  submit() {
+    this.newPassenger.children=[...this.newPassenger.children];
+    this.submitEvent.emit(this.newPassenger);
   }
+  // submitPassenger() {
+  //   if (this.validateInput()) this.submit.emit(this.newPassenger);
+  // }
   validateInput(): Boolean {
     if (
       !this.newPassenger.fullName ||

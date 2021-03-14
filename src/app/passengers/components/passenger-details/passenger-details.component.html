@@ -1,33 +1,33 @@
 <div style="text-align: center"
  class="container" 
  [ngClass]="{
-    'checked-in-container': passenger.checkedIn,
-    'checked-out-container': !passenger.checkedIn
+    'checked-in-container': passenger?.checkedIn,
+    'checked-out-container': !passenger?.checkedIn
   }">
   <div class="passenger-info">
     
 
-    <span>{{ passenger.fullName }}</span>
+    <span>{{ passenger?.fullName }}</span>
     <div class="checkin-date">
       <p>
         Check in date :
         <br />
         <span class="information" >
           {{
-            passenger.checkInDate
-              ? (passenger.checkInDate | date: "y MMMM d")
+            passenger?.checkInDate
+              ? (passenger?.checkInDate | date: "y MMMM d")
               : "not checked in"
           }}
         </span>
       </p>
     </div>
   </div>
-  <div *ngIf="passenger.children.length > 0">
+  <div *ngIf="passenger?.children.length > 0">
     <div class="children">
       <p>Children :<span class="information"> </span></p>
     </div>
     <div class="childrens">
-      <div class="childrens-details" *ngFor="let child of passenger.children">
+      <div class="childrens-details" *ngFor="let child of passenger?.children">
         <h1>
           Name : <span class="information">{{ child.name }}</span>
         </h1>

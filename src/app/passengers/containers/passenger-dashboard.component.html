@@ -14,6 +14,6 @@
     </div>
   </div>
   <div *ngIf="addingNewPassenger">
-    <passenger-forms (submit)="appendPassenger($event)" (cancel)="cancelAddingPassenger()"></passenger-forms>
+    <passenger-forms (submitEvent)="appendPassenger($event)" (cancel)="cancelAddingPassenger()"></passenger-forms>
   </div>
 </div>
